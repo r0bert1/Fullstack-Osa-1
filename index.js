@@ -2,24 +2,27 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 const Header = (props) => {
+    console.log(props)
     return (
         <div>
-            <h1> {props.course} </h1>
+            <h1> {props.course[0].name} </h1>
         </div>
     )
 }
 
 const Content = (props) => {
+    console.log(props)
     return (
         <div>
-            <Part part1={props.part1.name} exercises1={props.part1.exercises} />
-            <Part part2={props.part2.name} exercises2={props.part2.exercises} />
-            <Part part3={props.part3.name} exercises3={props.part3.exercises} />
+            <Part part1={props.parts[0].name} exercises1={props.parts[0].exercises} />
+            <Part part2={props.parts[1].name} exercises2={props.parts[1].exercises} />
+            <Part part3={props.parts[2].name} exercises3={props.parts[2].exercises} />
         </div>
     )
 }
 
 const Part = (props) => {
+    console.log(props)
     return (
         <div>
             <p> {props.part1} {props.exercises1} </p>
@@ -32,31 +35,38 @@ const Part = (props) => {
 const Total = (props) => {
     return (
         <div>  
-            <p> yhteensä {props.part1.exercises + props.part2.exercises + props.part3.exercises} tehtävää </p> 
+            <p> yhteensä {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises} tehtävää </p> 
         </div>
     )
 }
 
 const App = () => {
-  const course = 'Half Stack -sovelluskehitys'
-  const part1 = {
+  const course = [
+    {
+      name: 'Half Stack -sovelluskehitys'
+    }
+  ]
+  const parts = [
+    {
       name: 'Reactin perusteet',
       exercises: 10
-  }
-  const part2 = {
-    name: 'Tiedonvälitys propseilla',
-    exercises: 7
-  }
-  const part3 = {
-    name: 'Komponenttien tila',
-    exercises: 14
-  }
+    },
+    {
+      name: 'Tiedonvälitys propseilla',
+      exercises: 7
+    },
+    {
+      name: 'Komponenttien tila',
+      exercises: 14
+    }
+  ]
+    
 
   return (
     <div>
       <Header course={course} />
-      <Content part1={part1} part2={part2} part3={part3} />
-      <Total part1={part1} part2={part2} part3={part3}/>
+      <Content parts={parts} />
+      <Total parts={parts} />
     </div>
   )
 }
