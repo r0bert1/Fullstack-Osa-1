@@ -86,7 +86,7 @@ const App = (props) => {
       <Button clickHandler={handleNeutralReview} text='neutraali'/>
       <Button clickHandler={handleBadReview} text='huono'/>
       <h1>statistiikka</h1>
-      <Statistics good={good} neutral={neutral} bad={bad}/>
+      <Statistics good={good} neutral={neutral} bad={bad} />
     </div>
   )
 }
